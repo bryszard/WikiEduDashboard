@@ -51,7 +51,7 @@ If you know your way around Rails, here's the very short version. Some additiona
     - $ `yarn`
 
 - Install PhantomJS:
-    - $ `sudo npm install -g phantomjs-prebuilt`
+    - $ `sudo yarn global add phantomjs-prebuilt`
 
 - Install Pandoc
     - See the Pandoc [installation guide](http://pandoc.org/installing.html) for your environment's specifics.
@@ -79,7 +79,7 @@ If you know your way around Rails, here's the very short version. Some additiona
   - Windows: Download [the Windows port](https://github.com/MSOpenTech/redis/releases) by the Microsoft Open Tech Group
 
 - Install Gulp (if not already installed)
-  - `sudo npm install -g gulp-cli`
+  - `sudo yarn global add gulp-cli`
 
 - Install R:
   - Debian: `sudo apt install r-base`

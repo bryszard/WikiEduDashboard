@@ -1,7 +1,8 @@
 import '../../testHelper';
 import sinon from 'sinon';
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
+import { mount } from 'enzyme';
+
 import StudentList from '../../../app/assets/javascripts/components/students/student_list.jsx';
 import ServerActions from '../../../app/assets/javascripts/actions/server_actions.js';
 
@@ -37,7 +38,7 @@ describe('StudentList', () => {
   };
 
   it('displays \'Name\' column', () => {
-    const studentList = ReactTestUtils.renderIntoDocument(
+    const studentList = mount(
       <div>
         <StudentList
           store={reduxStore}
@@ -51,7 +52,7 @@ describe('StudentList', () => {
         />
       </div>
     );
-    expect(studentList.textContent).to.contain('Name');
+    expect(studentList.text()).to.contain('Name');
   });
 
   it('triggers a server action when notify button is clicked', () => {
@@ -59,7 +60,7 @@ describe('StudentList', () => {
     global.confirm = function () { return true; };
     const notifyOverdue = sinon.spy(ServerActions, 'notifyOverdue');
 
-    const studentList = ReactTestUtils.renderIntoDocument(
+    const studentList = mount(
       <StudentList
         store={reduxStore}
         params={params}
@@ -74,8 +75,8 @@ describe('StudentList', () => {
     studentList.setState({ users: users });
     studentList.setState({ assignments: assignments });
 
-    const button = ReactTestUtils.findRenderedDOMComponentWithClass(studentList, 'notify_overdue');
-    ReactTestUtils.Simulate.click(button);
+    const button = studentList.find('.notify_overdue');
+    button.simulate('click');
     expect(notifyOverdue.callCount).to.eq(1);
   });
 }

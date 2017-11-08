@@ -8,6 +8,8 @@ import loadPlugins from 'gulp-load-plugins';
 const plugins = loadPlugins();
 import config from '../config.js';
 
+// These files were originally from bower.json, but via bower-away,
+// we migrated to import them with yarn and symlink them to /vendor.
 const mainBowerFiles = ['../../vendor/jquery/dist/jquery.js',
   '../../vendor/jquery-ujs/src/rails.js',
   '../../vendor/list.js/dist/list.js',
